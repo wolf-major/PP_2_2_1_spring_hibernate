@@ -16,11 +16,6 @@ public class MainApp {
 
       UserService userService = context.getBean(UserService.class);
 
-/*      userService.add(new User("User1", "Lastname1", "user1@mail.ru"));
-      userService.add(new User("User2", "Lastname2", "user2@mail.ru"));
-      userService.add(new User("User3", "Lastname3", "user3@mail.ru"));
-      userService.add(new User("User4", "Lastname4", "user4@mail.ru"));*/
-
       User user1 = new User("User1", "Lastname1", "user1@mail.ru");
       Car car1 = new Car("Tesla", 3);
 
@@ -40,12 +35,10 @@ public class MainApp {
       userService.add(user3);
 
       User user4 = new User("User4", "Lastname4", "user4@mail.ru");
-      Car car4 = new Car("VAZ", 2113);
+      Car car4 = new Car("LADA", 2113);
 
       user4.setUserCar(car4);
       userService.add(user4);
-
-      System.out.println(userService.getUserByModelAndSeries("Tesla", 3));
 
       List<User> users = userService.listUsers();
       for (User user : users) {
@@ -58,13 +51,12 @@ public class MainApp {
          System.out.println();
       }
 
+      String modelUser = "BMW";
+      int seriesUser = 3;
+
+      System.out.printf("Пользователь(и), который(ые) владеет(ют) машиной марки %s серии %s:\n", modelUser, seriesUser);
+      System.out.println(userService.getUserByModelAndSeries("Tesla", 3));
+
       context.close();
    }
 }
-
-/*
-1. Создайте соединение к своей базе данных и схему. Запустите приложение. Проверьте, что оно полностью работает.
-2. Создайте сущность Car с полями String model и int series, на которую будет ссылаться User с помощью связи one-to-one.
-3. Добавьте этот класс в настройки hibernate.
-4. Создайте несколько пользователей с машинами, добавьте их в базу данных, вытащите обратно.
-5. В сервис добавьте метод, который с помощью hql-запроса будет доставать юзера, владеющего машиной по ее модели и серии.*/
