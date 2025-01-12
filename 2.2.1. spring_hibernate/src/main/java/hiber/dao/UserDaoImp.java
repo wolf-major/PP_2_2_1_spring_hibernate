@@ -14,9 +14,12 @@ import java.util.Objects;
 
 @Repository
 public class UserDaoImp implements UserDao {
+   private final SessionFactory sessionFactory;
 
    @Autowired
-   private SessionFactory sessionFactory;
+   public UserDaoImp(SessionFactory sessionFactory) {
+       this.sessionFactory = sessionFactory;
+   }
 
    @Override
    public void add(User user) {
@@ -39,7 +42,7 @@ public class UserDaoImp implements UserDao {
                          "AND user.userCar.series = :series");
          query.setParameter("model", model);
          query.setParameter("series", series);
-         List<Objects> listOfUsers = query.getResultList();
+         List<User> listOfUsers = query.getResultList();
          return !listOfUsers.isEmpty()
                  ? listOfUsers.toString()
                  : "---\nПользователь с такой машиной не найден! Проверьте введенные данные.\n---";
