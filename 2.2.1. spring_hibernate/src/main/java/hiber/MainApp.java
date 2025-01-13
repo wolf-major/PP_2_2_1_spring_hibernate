@@ -46,7 +46,7 @@ public class MainApp {
       String modelUser = "BMW";
       int seriesUser = 3;
 
-      System.out.printf("Пользователь(и), который(ые) владеет(ют) машиной марки %s серии %s:\n", modelUser, seriesUser);
+      System.out.printf("Владелец(цы) автомобиля марки %s серии %s:\n", modelUser, seriesUser);
       System.out.println(userService.getUserByModelAndSeries(modelUser, seriesUser));
 
       context.close();

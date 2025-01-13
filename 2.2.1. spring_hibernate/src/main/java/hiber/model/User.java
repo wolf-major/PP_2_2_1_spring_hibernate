@@ -70,6 +70,10 @@ public class User {
       return userCar;
    }
 
+   public void setUserCar(Car userCar) {
+      this.userCar = userCar;
+   }
+
    @Override
    public String toString() {
       return "Пользователь: " +
